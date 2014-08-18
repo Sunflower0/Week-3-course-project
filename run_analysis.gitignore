@@ -31,17 +31,20 @@
 	##Merge the two datasets: train & test
 
 	X_all <- rbind(X_train, X_test)	
-	sub_X_all <- X_all[grepl("mean|std", features$V2)]
+	s_X_all <- X_all[grepl("mean|std", features$V2)]
+	s_features <- grep("mean|std", features$V2, value = TRUE) 
+	sub_X_all <- s_X_all[!grepl("meanFreq", s_features)]
 	
 	label_all <- rbind(label_train, label_test)
 	subject_all <- rbind(subject_train, subject_test)
 
-  ##subset mean and standard deviation from original datasets
+  	##subset mean and standard deviation from original datasets
 	##remove all punctuation characters
 	##gsub("[[:punct:]]", " ", x)
 
 	sub_features <- grep("mean|std", features$V2,value= TRUE)
-	sf1 <- gsub("[[:punct:]]","",sub_features)
+	sf <- sub_features[!grepl("meanFreq", sub_features)]
+	sf1 <- gsub("[[:punct:]]","",sf)
 	names(sub_X_all)<- sf1
 	names(label_all)<- "label"
 	names(subject_all)<- "subject" 
@@ -51,7 +54,7 @@
 	
 	row_names <- paste("Subject",1:30, sep="")
 
-  ##split dataset by "label" and "subject" and calculate average of each colum variable
+	##split dataset by "label" and "subject" and calculate average of each colume variable
 
 	for(i in 1:6){
 		x <- data_label[[i]]
