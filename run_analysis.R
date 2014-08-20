@@ -1,4 +1,6 @@
-
+	library(reshape)
+	library(plry)
+	
 	run_analysis <- function(){
 
 	## Getting and Cleaning Data Course Project
@@ -71,10 +73,12 @@
 		
 		}
 	names(ave_list) <- activity_labels[,2]
+	t_ave_list <- ldply(ave_list, melt)
+	names(t_ave_list)<- c("label","subject","variable","value")
 
 	##write the tidy data to "a.txt" under ./Working Directory
 
-	write.table(ave_list,"a.txt",row.name=FALSE)
+	write.table(t_ave_list,"a.txt",row.name=FALSE)
 	}	
 	
 
