@@ -98,7 +98,6 @@ Features Definition
 - 5 tBodyAccstdY: average of tBodyAcc-std()-Y
 - 6 tBodyAccstdZ: average of tBodyAcc-std()-Z
 
-
 - 7 tGravityAccmeanX: average of tGravityAcc-mean()-X
 - 8 tGravityAccmeanY: average of tGravityAcc-mean()-Y
 - 9 tGravityAccmeanZ: average of tGravityAcc-mean()-Z
@@ -157,12 +156,6 @@ Features Definition
 - 51 fBodyAccJerkstdY: average of fBodyAccJerk-std()-Y
 - 52 fBodyAccJerkstdZ: average of fBodyAccJerk-std()-Z
 
-- 53 fBodyGyro-mean()-X
-- 54 fBodyGyro-mean()-Y
-- 55 fBodyGyro-mean()-Z
-- 56 fBodyGyro-std()-X
-- 57 fBodyGyro-std()-Y
-- 58 fBodyGyro-std()-Z
 - 53 fBodyGyromeanX: average of fBodyGyro-mean()-X
 - 54 fBodyGyromeanY: average of fBodyGyro-mean()-Y
 - 55 fBodyGyromeanZ: average of fBodyGyro-mean()-Z
