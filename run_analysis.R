@@ -1,5 +1,5 @@
 	library(reshape)
-	library(plry)
+	library(plyr)
 	
 	run_analysis <- function(){
 
@@ -54,7 +54,9 @@
 	data_total <- cbind(sub_X_all, label_all, subject_all)
 	data_label <- split(data_total, data_total$label)
 	
-	row_names <- paste("Subject",1:30, sep="")
+	activities <- paste(1:6, activity_labels[,2], sep="")
+	a <- paste("0", 1:9,sep="")
+	row_names <- paste("Subject",c(a, 10:30), sep="")
 
 	##split dataset by "label" and "subject" and calculate average of each colume variable
 
@@ -72,9 +74,10 @@
 		else     ave_list <- rbind(ave_list,list( ave_subject))
 		
 		}
-	names(ave_list) <- activity_labels[,2]
-	t_ave_list <- ldply(ave_list, melt)
-	names(t_ave_list)<- c("label","subject","variable","value")
+	names(ave_list) <- activities
+	m_ave_list <- ldply(ave_list, melt)
+	names(m_ave_list)<- c("label","subject","variable","value")
+	t_ave_list <- cast(m_ave_list, label + subject ~ variable)
 
 	##write the tidy data to "a.txt" under ./Working Directory
 
